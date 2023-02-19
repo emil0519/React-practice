@@ -1,25 +1,45 @@
+import { useEffect, useState } from "react";
 import down from "../img/down.png";
+import HoverItem from "./HoverItem";
 
 type HeaderButtonProps = {
   text: string;
   isDetails: boolean;
+  detailInfo?: string[];
 };
 
-function HeaderButton({ text, isDetails }: HeaderButtonProps) {
+function HeaderButton({ text, isDetails, detailInfo }: HeaderButtonProps) {
+  const [hover, setHover] = useState<boolean>(false);
+
   return (
     <div
-      className={`${
-        isDetails ? "cursor-pointer" : "cursor-default"
-      } w-[max-content] h-[21px] flex items-center mr-[20px] mb-[17.5px] relative`}
+      className="h-[max-content]"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <p className="text-[14px] mr-[1px]">{text}</p>
-      {isDetails ? (
-        <img src={down} alt="" className="w-[20px] h-[20px]"></img>
-      ) : (
-        ""
-      )}
-      <div className="w-[max-content] h-[max-content] bg-[white] flex absolute top-[30px]">
-        <div className="h-[40px] cursor-pointer">男裝</div>
+      <div
+        className={`${
+          isDetails ? "cursor-pointer" : "cursor-default"
+        } w-[max-content] h-[max-content] flex items-center mr-[20px] mb-[17.5px] relative`}
+      >
+        <p className="text-[14px] mr-[1px]">{text}</p>
+        {isDetails ? (
+          <img src={down} alt="" className="w-[20px] h-[20px]"></img>
+        ) : (
+          ""
+        )}
+
+        {detailInfo && hover ? (
+          <div
+            className={`w-[max-content] h-[400px] bg-[white] flex flex-col absolute z-2 top-[30px] z-[10] rounded-md `}
+          >
+            {detailInfo.map((info) => (
+              <HoverItem eachInfo={info} />
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

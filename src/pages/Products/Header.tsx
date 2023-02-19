@@ -5,7 +5,7 @@ function Header() {
   interface DropDownListType {
     name: string;
     dropDown: boolean;
-    detailInfo?: any;
+    detailInfo?: string[];
   }
 
   const dropDownList: DropDownListType[] = [
@@ -35,6 +35,7 @@ function Header() {
           <HeaderButton
             text={info.name}
             isDetails={info.dropDown}
+            detailInfo={info.detailInfo}
             key={info.id}
           />
         ))}
