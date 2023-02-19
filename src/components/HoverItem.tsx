@@ -6,7 +6,6 @@ interface HoverItemProps {
 
 function HoverItem({ eachInfo }: HoverItemProps) {
   const [hoverOnItem, setHoverOnItem] = useState<boolean>(false);
-  console.log(eachInfo);
 
   return (
     <div

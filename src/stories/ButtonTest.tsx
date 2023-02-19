@@ -27,7 +27,7 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+export const ButtonTest = ({
   primary = false,
   size = "medium",
   backgroundColor,
@@ -38,15 +38,8 @@ export const Button = ({
     ? "storybook-button--primary"
     : "storybook-button--secondary";
   return (
-    <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
+    <button type="button" className="bg-[blue] w-[90px] h-[90px]">
+      Button
     </button>
   );
 };
